@@ -1,0 +1,17 @@
+{
+    "name": "pedropetretti/pedro-blog",
+    "autoload": {
+        "psr-4": {
+            "Pedropetretti\\Library\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "PedroBataglia",
+            "email": "114232124+PedroBataglia@users.noreply.github.com"
+        }
+    ],
+    "require": {
+      "ext-pdo": "*"
+    }
+}
