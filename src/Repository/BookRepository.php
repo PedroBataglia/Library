@@ -1,12 +1,15 @@
 <?php
 
-namespace PedroPetretti\Library\Repository;
+declare(strict_types=1);
 
+namespace Pedropetretti\Library\Repository;
+
+use Pedropetretti\Library\Entity\Book;
 use PDO;
-use PedroPetretti\Library\Books\Book;
 
 class BookRepository
 {
+
     public function __construct(private PDO $pdo)
     {
     }
@@ -20,7 +23,6 @@ class BookRepository
         $bookList = $this->pdo
             ->query('SELECT * FROM books;')
             ->fetchAll(\PDO::FETCH_ASSOC);
-
         return array_map(
             function (array $bookData) {
                 $book = new Book($bookData['name']);
@@ -34,9 +36,9 @@ class BookRepository
 
     public function add(Book $book): bool
     {
-        $sql = 'INSERT INTO book(name, image_path) VALUES (?, ?)';
+        $sql = 'INSERT INTO books (name, image_path) VALUES (?, ?);';
         $statement = $this->pdo->prepare($sql);
-        $statement->bidnValue(1, $book->name);
+        $statement->bindValue(1, $book->name);
         $statement->bindValue(2, $book->getFilePath());
 
         $result = $statement->execute();
@@ -53,7 +55,7 @@ class BookRepository
         $statement->bindValue(1, $id, \PDO::PARAM_INT);
         $statement->execute();
 
-         array_map(
+        array_map(
             function (array $bookData) {
                 $book = new Book($bookData['name']);
                 $book->setId($bookData['id']);
@@ -63,4 +65,15 @@ class BookRepository
 
         return $book;
     }
+
+    private function hydratebook(array $bookData): Book
+    {
+        $book = new Book($bookData['name']);
+        $book->setId($bookData['id']);
+        if ($bookData['image_path'] !== null) {
+            $book->setFilePath($bookData['image_path']);
+        }
+        return $book;
+    }
 }
+

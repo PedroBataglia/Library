@@ -1,16 +1,17 @@
 <?php
 
-namespace PedroPetretti\Library\Books;
+declare(strict_types=1);
+
+namespace Pedropetretti\Library\Entity;
 
 class Book
 {
     public readonly int $id;
-    public readonly string $name;
     private ?string $filePath = null;
 
-    public function __construct(string $name)
+    public function __construct(public readonly string $name)
     {
-        $this->name = $name;
+
     }
 
     public function setId(int $id): void

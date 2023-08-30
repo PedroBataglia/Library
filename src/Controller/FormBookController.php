@@ -2,7 +2,7 @@
 
 namespace Pedropetretti\Library\Controller;
 
-use PedroPetretti\Library\Books\Book;
+use PedroPetretti\Library\Entity\Book;
 use Pedropetretti\Library\Repository\BookRepository;
 
 class FormBookController implements Controller

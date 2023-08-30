@@ -2,7 +2,13 @@
 
 declare(strict_types=1);
 
+use Pedropetretti\Library\Entity\Book;
 use Pedropetretti\Library\Repository\BookRepository;
+use Pedropetretti\Library\Controller\{BookListController,
+    NewBookController,
+    FormBookController,
+    FilterBookController
+};
 
 require_once __DIR__ . '/../vendor/autoload.php';
 

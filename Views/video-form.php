@@ -1,5 +1,5 @@
 <?php
-
+/** @var \Pedropetretti\Library\Entity\Book|null $book*/
 ?>
 <h1>Adicione um novo Livro</h1>
 
