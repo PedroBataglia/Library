@@ -2,7 +2,6 @@
 /** @var \Pedropetretti\Library\Entity\Book|null $book*/
 ?>
 <h1>Adicione um novo Livro</h1>
-
 <form enctype="multipart/form-data"
         method="post">
     <div>
@@ -10,6 +9,7 @@
         <label for="name" >book Name</label>
         <input name="name"
                required
+               value="<?= $book?->name; ?>"
                placeholder="Percy jackson e algo assim"
                id="name" >
     </div>

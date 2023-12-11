@@ -22,6 +22,8 @@ use Pedropetretti\Library\Entity\Book;
 <?php foreach($bookList as $book): ?>
     <li>
          <h3><?= $book->name?></h3>
+        <a href="./edit-book?id=<?= $book->id?>">Editar</a>
+        <a href="./remove-vido?id=<?= $book->id?>">Remover</a>
     </li>
 <?php endforeach; ?>
 

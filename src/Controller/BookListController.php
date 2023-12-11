@@ -14,7 +14,6 @@ class BookListController implements Controller
     public function processRequest(): void
     {
         $bookList = $this->bookRepository->all();
-        var_dump($bookList);
 
         require_once __DIR__ . '/../../Views/video-list.php';
     }
